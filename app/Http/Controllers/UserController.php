@@ -91,18 +91,17 @@ class UserController extends Controller
     }
 
 
-    /**
-     * Update Users Profile
+        /**
+     * Update user
      * @return Iluminate\Http\Response
      */
     public function updateUser(Request $request)
     {
-
-        //$request->headers->set('Content-type', 'application/json');
-
-        $responseUpdateUser = $this->UserService->updateUser($request->all(), $request->header());
+        $token = $request->header('Authorization');
+        $responseUpdateUser = $this->UserService->updateUser($request->all(), $token);
         return $this->successResponse($responseUpdateUser);
     }
+
 
 
 

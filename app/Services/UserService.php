@@ -84,12 +84,16 @@ class UserService
 
 
 	/**
-     * Update user profile related to token
-     * @return string
-     */
-	public function updateUser($data, $headers)
+	 * Update user info related to token
+	 * @return string
+	 */
+	public function updateUser($data, $token)
 	{
-		return $this->performRequest('POST','/api/updateUser', $data, $headers);
+		$headers = [];
+		$headers['Authorization'] = [$token];
+		return $this->performRequest('POST',"/api/updateUser", $data, $headers);
 	}
+
+
 
 }

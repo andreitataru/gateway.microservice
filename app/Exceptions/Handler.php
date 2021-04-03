@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
 
         /**
         *   validar exceptiones HTTP y retornar mensaje en json
-        *   probamos con un metodo y una ruta no valida, ejm DELET con ruta localhost:591/authors
+        *   probamos con un metodo y una ruta no valida, ejm DELET con ruta localhost:591/users
         */
         if ($exception instanceof HttpException) {
 
