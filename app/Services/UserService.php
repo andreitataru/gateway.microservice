@@ -91,6 +91,8 @@ class UserService
 	{
 		$headers = [];
 		$headers['Authorization'] = [$token];
+	
+
 		return $this->performRequest('POST',"/api/updateUser", $data, $headers);
 	}
 
