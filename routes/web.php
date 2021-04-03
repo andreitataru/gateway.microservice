@@ -20,19 +20,27 @@ $router->get('/', function () use ($router) {
 
 //$router->group(['middleware' => 'client.credentials'], function() use ($router){
 
-	/**
-	 * Users routes
-	 */ 
-	$router->options('/{any:.*}', function (Request $req) {
-		return;
-	  });
-	$router->post('/api/register', 'UserController@register');
-	$router->post('/api/login', 'UserController@login');
-	$router->get('/api/profile', 'UserController@profile');
-	$router->get('/api/checkToken', 'UserController@checkToken');
-	$router->get('/api/users/{id}', 'UserController@singleUser');
-	$router->get('/api/users', 'UserController@users');
-	$router->post('/api/updateUser', 'UserController@updateUser');
+		/**
+	 	* Users routes
+	 	*/ 
+		$router->options('/{any:.*}', function (Request $req) {
+			return;
+		});
+		
+		//USER MICROSERVICE
+		$router->post('/api/register', 'UserController@register');
+		$router->post('/api/login', 'UserController@login');
+		$router->get('/api/profile', 'UserController@profile');
+		$router->get('/api/checkToken', 'UserController@checkToken');
+		$router->get('/api/users/{id}', 'UserController@singleUser');
+		$router->get('/api/users', 'UserController@users');
+		$router->post('/api/updateUser', 'UserController@updateUser');
+
+		//CHAT MICROSERVICE
+
+		$router->post('/api/SendMessage', 'MessageController@SendMessage');
+		$router->post('/api/GetMessages', 'MessageController@GetMessages');
+		$router->get('/api/GetActiveChats/{userId}', 'MessageController@GetActiveChats');
 
 
 //});
