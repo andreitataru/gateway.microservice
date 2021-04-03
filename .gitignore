@@ -2,7 +2,6 @@
 /.idea
 Homestead.json
 Homestead.yaml
-.env
 .phpunit.result.cache
 database/database.sqlite
 /my_notes
