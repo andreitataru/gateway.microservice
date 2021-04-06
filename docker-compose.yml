@@ -4,9 +4,6 @@ services:
   #PHP Service
   gateway:
     build:
-      args:
-        user: dii
-        uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: lumen-gateway
@@ -17,7 +14,6 @@ services:
       SERVICE_TAGS: dev
     working_dir: /var/www
     tty: true
-    entrypoint: ["./scripts/rungate.sh"]
     volumes:
       - ./:/var/www
     networks:
@@ -39,7 +35,6 @@ services:
       WAIT_HOST_CONNECT_TIMEOUT: 30
     working_dir: /var/www
     tty: true
-    entrypoint: ["./scripts/run.sh"]
     depends_on: 
       - db
     volumes:
@@ -50,9 +45,6 @@ services:
 
   message:
     build:
-      args:
-        user: dii
-        uid: 1000
       context: ../message.microservice/
       dockerfile: Dockerfile
     image: lumen-message
@@ -67,7 +59,6 @@ services:
       WAIT_HOST_CONNECT_TIMEOUT: 30
     working_dir: /var/www
     tty: true
-    entrypoint: ["./scripts/run.sh"]
     depends_on: 
       - db
     volumes:
@@ -78,9 +69,6 @@ services:
   
   house:
     build:
-      args:
-        user: dii
-        uid: 1000
       context: ../house.microservice/
       dockerfile: Dockerfile
     image: lumen-house
@@ -95,7 +83,6 @@ services:
       WAIT_SLEEP_INTERVAL: 15
       WAIT_HOST_CONNECT_TIMEOUT: 30
     working_dir: /var/www
-    entrypoint: ["./scripts/run.sh"]
     depends_on: 
       - db
     volumes:
@@ -156,7 +143,6 @@ services:
     container_name: db
     restart: unless-stopped
     environment:
-      #MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME_DOCKER}
