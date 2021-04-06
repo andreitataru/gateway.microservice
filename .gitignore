@@ -6,3 +6,5 @@ Homestead.yaml
 database/database.sqlite
 /my_notes
 storage/*.key
+/user.microservice
+/chat.microservice

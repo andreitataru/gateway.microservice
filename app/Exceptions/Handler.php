@@ -61,18 +61,14 @@ class Handler extends ExceptionHandler
         *   validar exceptiones HTTP y retornar mensaje en json
         *   probamos con un metodo y una ruta no valida, ejm DELET con ruta localhost:591/users
         */
-        if ($exception instanceof HttpException) {
+        // if ($exception instanceof HttpException) {
 
-            $code = $exception->getStatusCode(); //obtener codigo de exception
-            $message = Response::$statusTexts[$code];
-            
-            if ($message == 'Method Not Allowed') {
-                $message = 'Metodo no permitido';
-            }
+        //     $code = $exception->getStatusCode(); //obtener codigo de exception
+        //     $message = Response::$statusTexts[$code];
 
-            return $this->errorResponse($message, $code);
+        //     return $this->errorResponse($message, $code);
 
-        }
+        // }
 
         /**
          *  validar exceptiones Models y retornar mensaje en json

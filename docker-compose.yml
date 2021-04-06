@@ -1,0 +1,178 @@
+version: '3'
+services:
+
+  #PHP Service
+  gateway:
+    build:
+      args:
+        user: dii
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: lumen-gateway
+    container_name: gateway
+    restart: unless-stopped
+    environment:
+      SERVICE_NAME: gateway
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    tty: true
+    entrypoint: ["./scripts/rungate.sh"]
+    volumes:
+      - ./:/var/www
+    networks:
+      - app-network
+  
+  user:
+    build:
+      context: ../user.microservice/
+      dockerfile: Dockerfile
+    image: lumen-user
+    container_name: user
+    restart: on-failure
+    environment:
+      SERVICE_NAME: user
+      SERVICE_TAGS: dev
+      WAIT_HOSTS: db:3306
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 15
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    working_dir: /var/www
+    tty: true
+    entrypoint: ["./scripts/run.sh"]
+    depends_on: 
+      - db
+    volumes:
+      - ./scripts:/var/www/scripts
+      - ../user.microservice:/var/www
+    networks:
+      - app-network
+
+  message:
+    build:
+      args:
+        user: dii
+        uid: 1000
+      context: ../message.microservice/
+      dockerfile: Dockerfile
+    image: lumen-message
+    container_name: message
+    restart: unless-stopped
+    environment:
+      SERVICE_NAME: message
+      SERVICE_TAGS: dev
+      WAIT_HOSTS: db:3306
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 15
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    working_dir: /var/www
+    tty: true
+    entrypoint: ["./scripts/run.sh"]
+    depends_on: 
+      - db
+    volumes:
+      - ./scripts:/var/www/scripts
+      - ../message.microservice:/var/www
+    networks:
+      - app-network
+  
+  house:
+    build:
+      args:
+        user: dii
+        uid: 1000
+      context: ../house.microservice/
+      dockerfile: Dockerfile
+    image: lumen-house
+    container_name: house
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: house
+      SERVICE_TAGS: dev
+      WAIT_HOSTS: db:3306
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 15
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+    working_dir: /var/www
+    entrypoint: ["./scripts/run.sh"]
+    depends_on: 
+      - db
+    volumes:
+      - ./scripts:/var/www/scripts
+      - ../house.microservice:/var/www
+    networks:
+      - app-network
+
+  #Nginx Service
+  nginx-gateway:
+    image: nginx:1.17-alpine
+    container_name: webserver-gateway
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf1.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+  
+  nginx-user:
+    image: nginx:1.17-alpine
+    container_name: webserver-user
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ../user.microservice:/var/www/
+      - ./nginx/conf2.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+  
+  nginx-house:
+    image: nginx:1.17-alpine
+    container_name: webserver-house
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ../house.microservice:/var/www/
+      - ./nginx/conf3.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+  
+  nginx-message:
+    image: nginx:1.17-alpine
+    container_name: webserver-message
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ../message.microservice:/var/www/
+      - ./nginx/conf4.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+  #MySQL Service
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    environment:
+      #MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME_DOCKER}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
