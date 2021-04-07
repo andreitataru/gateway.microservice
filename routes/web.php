@@ -37,10 +37,17 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/updateUser', 'UserController@updateUser');
 
 		//CHAT MICROSERVICE
-
 		$router->post('/api/SendMessage', 'MessageController@SendMessage');
 		$router->post('/api/GetMessages', 'MessageController@GetMessages');
 		$router->get('/api/GetActiveChats/{userId}', 'MessageController@GetActiveChats');
+
+		//HOUSE MICROSERVICE
+		$router->post('/api/addHouse', 'HouseController@addHouse');
+		$router->get('/api/getAllHouses', 'HouseController@getAllHouses');
+		$router->get('/api/getHouseById/{id}', 'HouseController@getHouseById');   
+		$router->post('/api/updateHouse', 'HouseController@updateHouse');
+		$router->get('/api/deleteHouseById/{id}', 'HouseController@deleteHouseById');
+		$router->post('/api/getHousesWithFilter', 'HouseController@getHousesWithFilter');
 
 
 //});

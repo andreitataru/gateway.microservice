@@ -8,6 +8,10 @@ return [
 	'messages' => [
 		'base_uri' => env('MESSAGES_SERVICE_API_BASE_URL'),
 		'secret' => env('MESSAGES_SERVICE_API_SECRET')
-	]
+	],
+	'houses' => [
+		'base_uri' => env('HOUSES_SERVICE_API_BASE_URL'),
+		'secret' => env('HOUSES_SERVICE_API_SECRET')
+	],
 
 ];

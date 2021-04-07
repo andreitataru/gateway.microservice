@@ -37,6 +37,15 @@ class MessageService
 	}
 
 	/**
+	 * Get Messages of usedId with idReceiver
+	 * @return string
+	 */
+	public function GetMessages($data)
+	{
+		return $this->performRequest('POST',"/api/GetMessages", $data);
+	}
+
+	/**
 	 * Get Active Chats
 	 * @return string
 	 */
