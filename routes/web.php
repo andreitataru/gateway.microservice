@@ -20,6 +20,10 @@ $router->get('/', function () use ($router) {
 
 //$router->group(['middleware' => 'client.credentials'], function() use ($router){
 
+
+	$router->group(['middleware' => 'cors'], function () use ($router) {
+		//All the routes you want to allow CORS for
+
 		/**
 	 	* Users routes
 	 	*/ 
@@ -50,6 +54,7 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/getHousesWithFilter', 'HouseController@getHousesWithFilter');
 
 
+	});
 //});
 
 
