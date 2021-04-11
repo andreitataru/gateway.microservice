@@ -1,6 +1,6 @@
 version: '3'
 services:
-
+  ##networking.k8s.io/v1
   #PHP Service
   gateway:
     build:
@@ -19,7 +19,7 @@ services:
     networks:
       - app-network
   
-  user:
+  userss:
     build:
       context: ../user.microservice/
       dockerfile: Dockerfile
@@ -29,16 +29,11 @@ services:
     environment:
       SERVICE_NAME: user
       SERVICE_TAGS: dev
-      WAIT_HOSTS: db:3306
-      WAIT_HOSTS_TIMEOUT: 300
-      WAIT_SLEEP_INTERVAL: 15
-      WAIT_HOST_CONNECT_TIMEOUT: 30
     working_dir: /var/www
     tty: true
     depends_on: 
       - db
     volumes:
-      - ./scripts:/var/www/scripts
       - ../user.microservice:/var/www
     networks:
       - app-network
@@ -53,16 +48,11 @@ services:
     environment:
       SERVICE_NAME: message
       SERVICE_TAGS: dev
-      WAIT_HOSTS: db:3306
-      WAIT_HOSTS_TIMEOUT: 300
-      WAIT_SLEEP_INTERVAL: 15
-      WAIT_HOST_CONNECT_TIMEOUT: 30
     working_dir: /var/www
     tty: true
     depends_on: 
       - db
     volumes:
-      - ./scripts:/var/www/scripts
       - ../message.microservice:/var/www
     networks:
       - app-network
@@ -78,15 +68,10 @@ services:
     environment:
       SERVICE_NAME: house
       SERVICE_TAGS: dev
-      WAIT_HOSTS: db:3306
-      WAIT_HOSTS_TIMEOUT: 300
-      WAIT_SLEEP_INTERVAL: 15
-      WAIT_HOST_CONNECT_TIMEOUT: 30
     working_dir: /var/www
     depends_on: 
       - db
     volumes:
-      - ./scripts:/var/www/scripts
       - ../house.microservice:/var/www
     networks:
       - app-network
