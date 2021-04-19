@@ -59,8 +59,11 @@ class UserService
 	 * Get the single of author from the author service
 	 * @return string
 	 */
-	public function checkToken($data, $headers)
+	public function checkToken($data, $token)
 	{
+		$headers = [];
+		$headers['Authorization'] = [$token];
+
 		return $this->performRequest('GET',"/api/checkToken", $data, $headers);
 	}
 

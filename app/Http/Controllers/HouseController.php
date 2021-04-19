@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use App\Traits\ApiResponser;    
 use Illuminate\Http\Request;
 use App\Services\HouseService; 
+use App\Services\UserService;
 
 class HouseController extends Controller
 {
@@ -16,6 +17,11 @@ class HouseController extends Controller
      * @var HouseService
      */
     public $HouseService;
+    /**
+     * User's service
+     * @var UserService
+     */
+    public $UserService;
 
 
     /**
@@ -23,8 +29,9 @@ class HouseController extends Controller
      *
      * @return void
      */
-    public function __construct(HouseService $HouseService)
+    public function __construct(UserService $UserService, HouseService $HouseService)
     {
+        $this->UserService = $UserService;
         $this->HouseService = $HouseService;
     }
 
@@ -35,8 +42,19 @@ class HouseController extends Controller
      */
     public function addHouse(Request $request)
     {
-        $responseAddHouse = $this->HouseService->addHouse($request->all());
-        return $this->successResponse($responseAddHouse);
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        
+        $obj = json_decode($responsecheckToken, true);
+
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host" && $obj['accountId'] == $request->hostId){
+            $responseAddHouse = $this->HouseService->addHouse($request->all());
+            return $this->successResponse($responseAddHouse);
+        }
+        else {
+            return "erro";
+        }
+
     }
 
     /**

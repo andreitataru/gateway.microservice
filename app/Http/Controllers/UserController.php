@@ -66,7 +66,8 @@ class UserController extends Controller
      */
     public function checkToken(Request $request)
     {
-        $responsecheckToken = $this->UserService->checkToken($request, $request->header());
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
         return $this->successResponse($responsecheckToken);
     }
 
