@@ -52,7 +52,7 @@ class HouseController extends Controller
             return $this->successResponse($responseAddHouse);
         }
         else {
-            return "erro";
+            return $this->errorResponse("Error", 401);
         }
 
     }
