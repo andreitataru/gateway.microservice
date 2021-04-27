@@ -3,8 +3,32 @@ export HOME=/root
 
 # Install PHP and dependencies from apt
 apt-get update
-apt-get install -y git nginx php7.2 php7.2-fpm php7.2-mysql php7.2-dev \
-    php7.2-mbstring php7.2-zip php-pear pkg-config
+apt-get install -y git nginx php7.4 php7.4-fpm php7.4-mysql php7.4-dev \
+    php7.4-mbstring php7.4-zip php-pear pkg-config \
+        freetype \
+        freetype-dev \
+        libpng \
+        libpng-dev \
+        libjpeg-turbo \
+        libjpeg-turbo-dev \
+            libjpeg \
+        libtool \
+        libxml2-dev \
+        make \
+        g++ \
+        autoconf \
+        imagemagick-dev \
+        libtool \
+        && docker-php-ext-install gd \
+        && docker-php-ext-configure gd \
+            --with-freetype \
+            --with-jpeg \
+        && docker-php-ext-install mbstring \
+        && docker-php-ext-install mysqli \
+        && pecl install imagick \
+        && docker-php-ext-enable imagick \
+        && apk del autoconf g++ libtool make \
+        && rm -rf /tmp/* /var/cache/apk/*
 
 # Install Composer
 sudo curl -sS https://getcomposer.org/installer | \
