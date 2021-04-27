@@ -47,7 +47,8 @@ class HouseController extends Controller
         
         $obj = json_decode($responsecheckToken, true);
 
-        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host" && $obj['accountId'] == $request->hostId){
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host"){
+            $request->request->add(['hostId' => $obj['accountId']]);
             $responseAddHouse = $this->HouseService->addHouse($request->all());
             return $this->successResponse($responseAddHouse);
         }
