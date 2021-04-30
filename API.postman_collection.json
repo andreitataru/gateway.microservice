@@ -1,0 +1,710 @@
+{
+	"info": {
+		"_postman_id": "6a9778de-8de7-4f92-9ad3-e50117f02008",
+		"name": "API",
+		"description": "PTIR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user.microservice",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "test@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "test@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CheckToken",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/checkToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"checkToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "accountType",
+									"value": "Host",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "birthDate",
+									"value": "1998/09/02",
+									"type": "text"
+								},
+								{
+									"key": "bankAccountNumber",
+									"value": "1232354345",
+									"type": "text"
+								},
+								{
+									"key": "cellphoneNumber",
+									"value": "910300000",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua !",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/updateUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "message.microservice",
+			"item": [
+				{
+					"name": "SendMessage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "idReceiver",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "teste",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/SendMessage",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"SendMessage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMessages",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "idReceiver",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/GetMessages",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"GetMessages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetActiveChats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/GetActiveChats/{{id}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"GetActiveChats",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "house.microservice",
+			"item": [
+				{
+					"name": "AddHouse",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "ola",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua !",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "local",
+									"type": "text"
+								},
+								{
+									"key": "coordinates",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "rent",
+									"value": "600",
+									"type": "text"
+								},
+								{
+									"key": "maxPeopleNum",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "roomsNum",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "area",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "houseType",
+									"value": "Apartment",
+									"type": "text"
+								},
+								{
+									"key": "spaceType",
+									"value": "vialactea",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "bla bla",
+									"type": "text"
+								},
+								{
+									"key": "closeServices",
+									"value": "Service1 service2",
+									"type": "text"
+								},
+								{
+									"key": "houseRules",
+									"value": "rule1 rule2",
+									"type": "text"
+								},
+								{
+									"key": "dateAvailable",
+									"value": "2021/05/01",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/addHouse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addHouse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllHouses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/getAllHouses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getAllHouses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHouseById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/getHouseById/{{houseId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getHouseById",
+								"{{houseId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateHouse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "houseId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Rua !",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rent",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "maxPeopleNum",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "roomsNum",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "area",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "houseType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "spaceType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "commodities",
+									"value": "commoditie1 commoditie2",
+									"type": "text"
+								},
+								{
+									"key": "houseRules",
+									"value": "rule1 rule2",
+									"type": "text"
+								},
+								{
+									"key": "installations",
+									"value": "installation1 installation2",
+									"type": "text"
+								},
+								{
+									"key": "dateAvailable",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "picture",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/updateHouse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"updateHouse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteHouseById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/deleteHouseById/{{houseId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"deleteHouseById",
+								"{{houseId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetHousesWithFilter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "location",
+									"value": "local",
+									"type": "text"
+								},
+								{
+									"key": "rent",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "maxPeopleNum",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "roomsNum",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "area",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "houseType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "spaceType",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "rating",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/getHousesWithFilter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"getHousesWithFilter"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "houseId",
+			"value": ""
+		}
+	]
+}

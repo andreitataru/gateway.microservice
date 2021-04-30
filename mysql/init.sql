@@ -33,6 +33,7 @@ CREATE DATABASE IF NOT EXISTS `houses`;
 USE houses;
 create TABLE IF NOT EXISTS houses (
     id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
     hostId INT(11) NOT NULL,
     address VARCHAR(255) NOT NULL,
     location VARCHAR(255) NOT NULL,
@@ -44,6 +45,7 @@ create TABLE IF NOT EXISTS houses (
     houseType VARCHAR(255) NOT NULL,
     spaceType VARCHAR(255) NOT NULL,
     description VARCHAR(255) NOT NULL,
+    closeServices VARCHAR(255) NOT NULL DEFAULT "",
     commodities VARCHAR(255) NOT NULL DEFAULT "",
     houseRules VARCHAR(255) NOT NULL DEFAULT "",
     installations VARCHAR(255) NOT NULL DEFAULT "",
