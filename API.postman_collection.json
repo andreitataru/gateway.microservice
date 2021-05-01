@@ -217,16 +217,21 @@
 				{
 					"name": "SendMessage",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
-								{
-									"key": "userId",
-									"value": "1",
-									"type": "text"
-								},
 								{
 									"key": "idReceiver",
 									"value": "2",
@@ -292,10 +297,20 @@
 				{
 					"name": "GetActiveChats",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8000/api/GetActiveChats/{{id}}",
+							"raw": "http://localhost:8000/api/GetActiveChats",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -303,8 +318,7 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"GetActiveChats",
-								"{{id}}"
+								"GetActiveChats"
 							]
 						}
 					},

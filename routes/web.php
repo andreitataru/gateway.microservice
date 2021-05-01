@@ -43,7 +43,7 @@ $router->get('/', function () use ($router) {
 		//CHAT MICROSERVICE
 		$router->post('/api/SendMessage', 'MessageController@SendMessage');
 		$router->post('/api/GetMessages', 'MessageController@GetMessages');
-		$router->get('/api/GetActiveChats/{userId}', 'MessageController@GetActiveChats');
+		$router->get('/api/GetActiveChats', 'MessageController@GetActiveChats');
 
 		//HOUSE MICROSERVICE
 		$router->post('/api/addHouse', 'HouseController@addHouse');

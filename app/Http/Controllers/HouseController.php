@@ -135,8 +135,6 @@ class HouseController extends Controller
         else {
             return $this->errorResponse("Error", 401);
         }
-
-
     }
 
 

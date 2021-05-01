@@ -6,10 +6,17 @@ use Illuminate\Http\Response;
 use App\Traits\ApiResponser;    
 use Illuminate\Http\Request;
 use App\Services\MessageService; 
+use App\Services\UserService;
 
 class MessageController extends Controller
 {
     use ApiResponser;       
+
+    /**
+     * User's service
+     * @var UserService
+     */
+    public $UserService;
 
     /**
      * Messages's service
@@ -23,9 +30,10 @@ class MessageController extends Controller
      *
      * @return void
      */
-    public function __construct(MessageService $MessageService)
+    public function __construct(UserService $UserService, MessageService $MessageService)
     {
         $this->MessageService = $MessageService;
+        $this->UserService = $UserService;
     }
 
 
@@ -35,8 +43,19 @@ class MessageController extends Controller
      */
     public function SendMessage(Request $request)
     {
-        $responseSendMessage = $this->MessageService->SendMessage($request->all());
-        return $this->successResponse($responseSendMessage);
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        
+        $obj = json_decode($responsecheckToken, true);
+
+        if ($obj['status'] == "Token Valid"){
+            $request->request->add(['userId' => $obj['accountId']]);
+            $responseSendMessage = $this->MessageService->SendMessage($request->all());
+            return $this->successResponse($responseSendMessage);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
     }
 
     /**
@@ -54,10 +73,20 @@ class MessageController extends Controller
      * Get Active Chats
      * @return Iluminate\Http\Response
      */
-    public function GetActiveChats($userId)
+    public function GetActiveChats(Request $request)
     {
-        $responseGetActiveChats = $this->MessageService->GetActiveChats($userId);
-        return $this->successResponse($responseGetActiveChats);
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        $obj = json_decode($responsecheckToken, true);
+
+        if ($obj['status'] == "Token Valid"){
+            $responseGetActiveChats = $this->MessageService->GetActiveChats($obj['accountId']);
+            return $this->successResponse($responseGetActiveChats);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
+        
     }
 
 
