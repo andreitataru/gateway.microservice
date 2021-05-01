@@ -13,5 +13,9 @@ return [
 		'base_uri' => env('HOUSES_SERVICE_API_BASE_URL'),
 		'secret' => env('HOUSES_SERVICE_API_SECRET')
 	],
+	'services' => [
+		'base_uri' => env('SERVICES_SERVICE_API_BASE_URL'),
+		'secret' => env('SERVICES_SERVICE_API_SECRET')
+	],
 
 ];

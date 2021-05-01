@@ -705,6 +705,81 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "service.microservice",
+			"item": [
+				{
+					"name": "addService",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "dfd",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "gdfg",
+									"type": "text"
+								},
+								{
+									"key": "priceHour",
+									"value": "324",
+									"type": "text"
+								},
+								{
+									"key": "serviceType",
+									"value": "dfg",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "dfg",
+									"type": "text"
+								},
+								{
+									"key": "minHourDay",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "maxHourDay",
+									"value": "20",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/addService",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"addService"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

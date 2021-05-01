@@ -53,6 +53,8 @@ $router->get('/', function () use ($router) {
 		$router->get('/api/deleteHouseById/{id}', 'HouseController@deleteHouseById');
 		$router->post('/api/getHousesWithFilter', 'HouseController@getHousesWithFilter');
 
+		//SERVICE MICROSERVICE
+		$router->post('/api/addService', 'ServiceController@addService');
 
 	});
 //});

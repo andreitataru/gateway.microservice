@@ -9,13 +9,13 @@ class HouseService
 	use ConsumesExternalServices;
 
 	/**
-	 * The base uri to be used to consume the Houses service
+	 * The base uri to be used to consume the Houses's service
 	 * @var string
 	 */
 	public $baseUri;
 
 	/**
-	 * The secret to be used to consume the houses service
+	 * The secret to be used to consume the houses's service
 	 * @var string
 	 */
 	public $secret;
