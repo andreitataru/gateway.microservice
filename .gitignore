@@ -8,3 +8,4 @@ database/database.sqlite
 storage/*.key
 /user.microservice
 /chat.microservice
+composer.lock

@@ -9,13 +9,13 @@ class MessageService
 	use ConsumesExternalServices;
 
 	/**
-	 * The base uri to be used to consume the Users service
+	 * The base uri to be used to consume the messages's service
 	 * @var string
 	 */
 	public $baseUri;
 
 	/**
-	 * The secret to be used to consume the Users service
+	 * The secret to be used to consume the messages's service
 	 * @var string
 	 */
 	public $secret;

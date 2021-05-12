@@ -84,8 +84,23 @@ class HouseController extends Controller
      */
     public function updateHouse(Request $request)
     {
-        $responseUpdateHouse = $this->HouseService->updateHouse($request->all());
-        return $this->successResponse($responseUpdateHouse);
+        //validar token e tipo de conta
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        $obj = json_decode($responsecheckToken, true);
+
+        //deixar só o dono da casa fazer alterações
+        $responseGetHouseById = $this->HouseService->getHouseById($request->houseId);
+        $houseObj = json_decode($responseGetHouseById, true);
+
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host" && $obj['accountId'] == $houseObj['house']['hostId']){
+            $responseUpdateHouse = $this->HouseService->updateHouse($request->all());
+            return $this->successResponse($responseUpdateHouse);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
+  
     }
 
     /**
@@ -103,10 +118,23 @@ class HouseController extends Controller
      * Get Active Chats
      * @return Iluminate\Http\Response
      */
-    public function deleteHouseById($id)
+    public function deleteHouseById($id, Request $request)
     {
-        $responseDeleteHouseById = $this->HouseService->deleteHouseById($id);
-        return $this->successResponse($responseDeleteHouseById);
+        //validar token e tipo de conta
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        $obj = json_decode($responsecheckToken, true);
+
+        //deixar só o dono da casa apagar a casa
+        $responseGetHouseById = $this->HouseService->getHouseById($id);
+        $houseObj = json_decode($responseGetHouseById, true);
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host" && $obj['accountId'] == $houseObj['house']['hostId']){
+            $responseDeleteHouseById = $this->HouseService->deleteHouseById($id);
+            return $this->successResponse($responseDeleteHouseById);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
     }
 
 

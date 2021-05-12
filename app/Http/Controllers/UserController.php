@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Response;   //para accerder a los metodos response
 use App\Traits\ApiResponser;    //para acceder a los metodos del trait
 use Illuminate\Http\Request;
-use App\Services\UserService; //para acceder a la conexion con el service de Author
+use App\Services\UserService; //para acceder a la conexion con el service de user
 
 class UserController extends Controller
 {
     use ApiResponser;       //para acceder a los metodos del trait
 
     /**
-     * The service to consume the author service
+     * The service to consume the user service
      * @var UserService
      */
     public $UserService;
