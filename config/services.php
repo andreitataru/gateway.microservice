@@ -17,5 +17,9 @@ return [
 		'base_uri' => env('SERVICES_SERVICE_API_BASE_URL'),
 		'secret' => env('SERVICES_SERVICE_API_SECRET')
 	],
+	'transactions' => [
+		'base_uri' => env('TRANSACTIONS_SERVICE_API_BASE_URL'),
+		'secret' => env('TRANSACTIONS_SERVICE_API_SECRET')
+	],
 
 ];

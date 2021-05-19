@@ -55,6 +55,14 @@ $router->get('/', function () use ($router) {
 
 		//SERVICE MICROSERVICE
 		$router->post('/api/addService', 'ServiceController@addService');
+		$router->get('/api/getAllServices', 'ServiceController@getAllServices');
+		$router->get('/api/getServiceById/{id}', 'ServiceController@getServiceById');   
+		$router->post('/api/updateService', 'ServiceController@updateService');
+		$router->get('/api/deleteServiceById/{id}', 'ServiceController@deleteServiceById');
+		$router->post('/api/getServicesWithFilter', 'ServiceController@getServicesWithFilter');
+
+		//TRANSACTION MICROSERVICE
+		$router->post('/api/addTransaction', 'TransactionController@addTransaction');
 
 	});
 //});
