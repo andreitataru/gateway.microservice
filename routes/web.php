@@ -63,6 +63,9 @@ $router->get('/', function () use ($router) {
 
 		//TRANSACTION MICROSERVICE
 		$router->post('/api/addTransaction', 'TransactionController@addTransaction');
+		$router->get('/api/getAllTransactions', 'TransactionController@getAllTransactions');
+		$router->get('/api/getTransactionById/{id}', 'TransactionController@getTransactionById');   
+		$router->get('/api/getTransactionByUserId/{id}', 'TransactionController@getTransactionByUserId');   
 
 	});
 //});

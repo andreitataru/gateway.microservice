@@ -36,5 +36,32 @@ class TransactionService
 		return $this->performRequest('POST','/api/addTransaction', $data);
 	}
 
+	/**
+	 * Get all transactions
+	 * @return string
+	 */
+	public function getAllTransactions()
+	{
+		return $this->performRequest('GET',"/api/getAllTransactions");
+	}
+
+	/**
+	 * Get transaction by id
+	 * @return string
+	 */
+	public function getTransactionById($id)
+	{
+		return $this->performRequest('GET',"/api/getTransactionById/{$id}");
+	}
+
+	/**
+	 * Get transaction by UserId
+	 * @return string
+	 */
+	public function getTransactionByUserId($id)
+	{
+		return $this->performRequest('GET',"/api/getTransactionByUserId/{$id}");
+	}
+
 
 }

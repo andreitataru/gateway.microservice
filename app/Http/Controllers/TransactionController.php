@@ -38,5 +38,35 @@ class TransactionController extends Controller
         return $this->successResponse($responseAddTransaction);
     }
 
+    /**
+     * Get Transactions
+     * @return Iluminate\Http\Response
+     */
+    public function getAllTransactions()
+    {
+        $responseGetAllTransactions = $this->TransactionService->getAllTransactions();
+        return $this->successResponse($responseGetAllTransactions);
+    }
+
+    /**
+     * Get transaction by id
+     * @return Iluminate\Http\Response
+     */
+    public function getTransactionById($id)
+    {
+        $responseGetTransactionById = $this->TransactionService->getTransactionById($id);
+        return $this->successResponse($responseGetTransactionById);
+    }
+
+        /**
+     * Get transaction by UserId
+     * @return Iluminate\Http\Response
+     */
+    public function getTransactionByUserId($id)
+    {
+        $responseGetTransactionByUserId = $this->TransactionService->getTransactionByUserId($id);
+        return $this->successResponse($responseGetTransactionByUserId);
+    }
+
     
 }
