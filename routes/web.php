@@ -73,6 +73,11 @@ $router->get('/', function () use ($router) {
 		$router->get('/api/getContractById/{id}', 'ContractController@getContractById');  
 		$router->get('/api/getContractByUserId/{id}', 'ContractController@getContractByUserId');  
 
+		//REVIEW MICROSERVICE
+		$router->post('/api/addReview', 'ReviewController@addReview');
+		$router->get('/api/getReviewById/{id}', 'ReviewController@getReviewById');
+		$router->get('/api/getReviewsByTarget/{id}/{type}', 'ReviewController@getReviewsByTarget');
+
 	});
 //});
 

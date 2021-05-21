@@ -25,5 +25,9 @@ return [
 		'base_uri' => env('CONTRACTS_SERVICE_API_BASE_URL'),
 		'secret' => env('CONTRACTS_SERVICE_API_SECRET')
 	],
+	'reviews' => [
+		'base_uri' => env('REVIEWS_SERVICE_API_BASE_URL'),
+		'secret' => env('REVIEWS_SERVICE_API_SECRET')
+	],
 
 ];

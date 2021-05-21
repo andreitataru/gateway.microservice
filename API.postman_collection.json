@@ -19,12 +19,12 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "test2",
+									"value": "test234",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "testSP@gmail.com",
+									"value": "testSP3@gmail.com",
 									"type": "text"
 								},
 								{
@@ -48,7 +48,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "testSP@gmail.com",
+									"value": "testSP3@gmail.com",
 									"type": "text"
 								},
 								{
@@ -108,7 +108,7 @@
 							"formdata": [
 								{
 									"key": "accountType",
-									"value": "ServiceProvider",
+									"value": "Host",
 									"type": "text"
 								},
 								{
@@ -659,9 +659,39 @@
 				{
 					"name": "addTransaction",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "buyerId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sellerId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "contractId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "paymentType",
+									"value": "Card",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/addTransaction"
 					},
 					"response": []
 				},
@@ -670,7 +700,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": "http://localhost:8000/api/getAllTransactions"
 					},
 					"response": []
 				},
@@ -679,7 +709,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": "http://localhost:8000/api/getTransactionById/{{transactionId}}"
 					},
 					"response": []
 				},
@@ -688,7 +718,162 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:595/api/getTransactionByUserId/{{userId}}"
+						"url": "http://localhost:8000/api/getTransactionByUserId/{{userId}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contract.microservice",
+			"item": [
+				{
+					"name": "addContract",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "houseId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "startContract",
+									"value": "2021/05/05",
+									"type": "text"
+								},
+								{
+									"key": "endContract",
+									"value": "2021/05/05",
+									"type": "text"
+								},
+								{
+									"key": "terms",
+									"value": "dfgbfhfg",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "234",
+									"type": "text"
+								},
+								{
+									"key": "contractType",
+									"value": "house",
+									"type": "text"
+								},
+								{
+									"key": "hostId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "studentId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/addContract"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllContracts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/getAllContracts"
+					},
+					"response": []
+				},
+				{
+					"name": "getContractById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/getContractById/{{contractId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getContractByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/getContractByUserId/{{userId}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review.microservice",
+			"item": [
+				{
+					"name": "addReview",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userIdReview",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "idReviewed",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "user",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/addReview"
+					},
+					"response": []
+				},
+				{
+					"name": "getReviewById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/getReviewById/{{reviewId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getReviewsByTarget",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/getReviewsByTarget/{{id}}/{{type}}"
 					},
 					"response": []
 				}
@@ -734,6 +919,22 @@
 		},
 		{
 			"key": "userId",
+			"value": ""
+		},
+		{
+			"key": "contractId",
+			"value": ""
+		},
+		{
+			"key": "reviewId",
+			"value": ""
+		},
+		{
+			"key": "type",
+			"value": ""
+		},
+		{
+			"key": "id",
 			"value": ""
 		}
 	]
