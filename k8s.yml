@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: gateway
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 1 # tells deployment to run 1 pods matching the template
   template:
     metadata:
       labels:
@@ -64,6 +64,7 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
+  loadBalancerIP: 34.76.181.222
 ---
 apiVersion: apps/v1
 kind: Deployment
