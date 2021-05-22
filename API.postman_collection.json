@@ -502,6 +502,15 @@
 						"url": "http://localhost:8000/api/getHousesWithFilter"
 					},
 					"response": []
+				},
+				{
+					"name": "getHousesWithOwnerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/getHousesWithOwnerId/{{hostId}}"
+					},
+					"response": []
 				}
 			]
 		},
@@ -721,6 +730,25 @@
 						"url": "http://localhost:8000/api/getTransactionByUserId/{{userId}}"
 					},
 					"response": []
+				},
+				{
+					"name": "getTransactionsByDate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2021-05-19",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/getTransactionsByDate"
+					},
+					"response": []
 				}
 			]
 		},
@@ -935,6 +963,10 @@
 		},
 		{
 			"key": "id",
+			"value": ""
+		},
+		{
+			"key": "hostId",
 			"value": ""
 		}
 	]
