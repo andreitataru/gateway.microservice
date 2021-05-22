@@ -138,6 +138,16 @@ class HouseController extends Controller
         return $this->successResponse($responseGetHousesWithFilter);
     }
 
+    
+    /**
+     * Get Houses by hostId
+     * @return Iluminate\Http\Response
+     */
+    public function getHousesWithOwnerId($id)
+    {
+        $responseGetHousesWithOwnerId = $this->HouseService->getHousesWithOwnerId($id);
+        return $this->successResponse($responseGetHousesWithOwnerId);
+    }
 
 
 

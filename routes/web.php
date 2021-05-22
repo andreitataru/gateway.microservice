@@ -52,6 +52,7 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/updateHouse', 'HouseController@updateHouse');
 		$router->get('/api/deleteHouseById/{id}', 'HouseController@deleteHouseById');
 		$router->post('/api/getHousesWithFilter', 'HouseController@getHousesWithFilter');
+		$router->get('/api/getHousesWithOwnerId/{id}', 'HouseController@getHousesWithOwnerId');   
 
 		//SERVICE MICROSERVICE
 		$router->post('/api/addService', 'ServiceController@addService');
@@ -76,7 +77,7 @@ $router->get('/', function () use ($router) {
 		//REVIEW MICROSERVICE
 		$router->post('/api/addReview', 'ReviewController@addReview');
 		$router->get('/api/getReviewById/{id}', 'ReviewController@getReviewById');
-		$router->get('/api/getReviewsByTarget/{id}/{type}', 'ReviewController@getReviewsByTarget');
+		$router->get('/api/getReviewsByTarget/{id}/{type}', 'ReviewController@getReviewsByTarget');   
 
 	});
 //});
