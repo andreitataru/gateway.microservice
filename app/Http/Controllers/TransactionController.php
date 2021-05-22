@@ -58,7 +58,7 @@ class TransactionController extends Controller
         return $this->successResponse($responseGetTransactionById);
     }
 
-        /**
+    /**
      * Get transaction by UserId
      * @return Iluminate\Http\Response
      */
@@ -66,6 +66,16 @@ class TransactionController extends Controller
     {
         $responseGetTransactionByUserId = $this->TransactionService->getTransactionByUserId($id);
         return $this->successResponse($responseGetTransactionByUserId);
+    }
+
+    /**
+     * Get Transactions by date
+     * @return Iluminate\Http\Response
+     */
+    public function getTransactionsByDate(Request $request)
+    {
+        $responseGetTransactionsByDate = $this->TransactionService->getTransactionsByDate($request->all());
+        return $this->successResponse($responseGetTransactionsByDate);
     }
 
     

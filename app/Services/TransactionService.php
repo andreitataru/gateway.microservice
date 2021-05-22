@@ -64,4 +64,13 @@ class TransactionService
 	}
 
 
+	/**
+     * Gets transactions by date
+     * @return string
+     */
+	public function getTransactionsByDate($data)
+	{
+		return $this->performRequest('POST','/api/getTransactionsByDate', $data);
+	}
+
 }

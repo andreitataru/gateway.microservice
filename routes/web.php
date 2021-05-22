@@ -66,7 +66,8 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/addTransaction', 'TransactionController@addTransaction');
 		$router->get('/api/getAllTransactions', 'TransactionController@getAllTransactions');
 		$router->get('/api/getTransactionById/{id}', 'TransactionController@getTransactionById');   
-		$router->get('/api/getTransactionByUserId/{id}', 'TransactionController@getTransactionByUserId');   
+		$router->get('/api/getTransactionByUserId/{id}', 'TransactionController@getTransactionByUserId');
+		$router->post('/api/getTransactionsByDate', 'TransactionController@getTransactionsByDate');
 
 		//CONTRACT MICROSERVICE
 		$router->post('/api/addContract', 'ContractController@addContract');
