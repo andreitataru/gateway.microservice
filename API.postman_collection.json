@@ -156,6 +156,21 @@
 						"url": "http://localhost:8000/api/users"
 					},
 					"response": []
+				},
+				{
+					"name": "userById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/users/{{id}}"
+					},
+					"response": []
 				}
 			]
 		},
