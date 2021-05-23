@@ -19,22 +19,22 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "test234",
+									"value": "teste",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "testSP3@gmail.com",
+									"value": "teste@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "abc123",
+									"value": "123",
 									"type": "text"
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/register"
+						"url": "{{URL}}/api/register"
 					},
 					"response": []
 				},
@@ -48,17 +48,17 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "testSP3@gmail.com",
+									"value": "student@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "abc123",
+									"value": "A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3",
 									"type": "text"
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/login"
+						"url": "{{URL}}/api/login"
 					},
 					"response": []
 				},
@@ -73,7 +73,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/profile"
+						"url": "{{URL}}/api/profile"
 					},
 					"response": []
 				},
@@ -88,7 +88,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/checkToken"
+						"url": "{{URL}}/api/checkToken"
 					},
 					"response": []
 				},
@@ -138,7 +138,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/updateUser"
+						"url": "{{URL}}/api/updateUser"
 					},
 					"response": []
 				},
@@ -153,7 +153,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/users"
+						"url": "{{URL}}/api/users"
 					},
 					"response": []
 				},
@@ -168,7 +168,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/users/{{id}}"
+						"url": "{{URL}}/api/users/{{id}}"
 					},
 					"response": []
 				}
@@ -193,17 +193,17 @@
 							"formdata": [
 								{
 									"key": "idReceiver",
-									"value": "2",
+									"value": "4",
 									"type": "text"
 								},
 								{
 									"key": "message",
-									"value": "teste",
+									"value": "teste1",
 									"type": "text"
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/SendMessage"
+						"url": "{{URL}}/api/SendMessage"
 					},
 					"response": []
 				},
@@ -227,7 +227,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/GetMessages"
+						"url": "{{URL}}/api/GetMessages"
 					},
 					"response": []
 				},
@@ -242,7 +242,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/GetActiveChats"
+						"url": "{{URL}}/api/GetActiveChats"
 					},
 					"response": []
 				}
@@ -342,7 +342,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/addHouse"
+						"url": "{{URL}}/api/addHouse"
 					},
 					"response": []
 				},
@@ -351,7 +351,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getAllHouses"
+						"url": "{{URL}}/api/getAllHouses"
 					},
 					"response": []
 				},
@@ -360,7 +360,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getHouseById/{{houseId}}"
+						"url": "{{URL}}/api/getHouseById/{{houseId}}"
 					},
 					"response": []
 				},
@@ -460,7 +460,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/updateHouse"
+						"url": "{{URL}}/api/updateHouse"
 					},
 					"response": []
 				},
@@ -475,7 +475,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/deleteHouseById/{{houseId}}"
+						"url": "{{URL}}/api/deleteHouseById/{{houseId}}"
 					},
 					"response": []
 				},
@@ -529,7 +529,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/getHousesWithFilter"
+						"url": "{{URL}}/api/getHousesWithFilter"
 					},
 					"response": []
 				},
@@ -538,7 +538,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getHousesWithOwnerId/{{hostId}}"
+						"url": "{{URL}}/api/getHousesWithOwnerId/{{hostId}}"
 					},
 					"response": []
 				}
@@ -598,7 +598,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/addService"
+						"url": "{{URL}}/api/addService"
 					},
 					"response": []
 				},
@@ -607,7 +607,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getAllServices"
+						"url": "{{URL}}/api/getAllServices"
 					},
 					"response": []
 				},
@@ -616,7 +616,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getServiceById/{{serviceId}}"
+						"url": "{{URL}}/api/getServiceById/{{serviceId}}"
 					},
 					"response": []
 				},
@@ -646,7 +646,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/updateService"
+						"url": "{{URL}}/api/updateService"
 					},
 					"response": []
 				},
@@ -661,7 +661,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/deleteServiceById/{{serviceId}}"
+						"url": "{{URL}}/api/deleteServiceById/{{serviceId}}"
 					},
 					"response": []
 				},
@@ -686,7 +686,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/getServicesWithFilter"
+						"url": "{{URL}}/api/getServicesWithFilter"
 					},
 					"response": []
 				}
@@ -730,7 +730,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/addTransaction"
+						"url": "{{URL}}/api/addTransaction"
 					},
 					"response": []
 				},
@@ -745,7 +745,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getAllTransactions"
+						"url": "{{URL}}/api/getAllTransactions"
 					},
 					"response": []
 				},
@@ -754,7 +754,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getTransactionById/{{transactionId}}"
+						"url": "{{URL}}/api/getTransactionById/{{transactionId}}"
 					},
 					"response": []
 				},
@@ -763,7 +763,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getTransactionByUserId/{{userId}}"
+						"url": "{{URL}}/api/getTransactionByUserId/{{userId}}"
 					},
 					"response": []
 				},
@@ -782,7 +782,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/getTransactionsByDate"
+						"url": "{{URL}}/api/getTransactionsByDate"
 					},
 					"response": []
 				}
@@ -847,7 +847,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/addContract"
+						"url": "{{URL}}/api/addContract"
 					},
 					"response": []
 				},
@@ -862,7 +862,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getAllContracts"
+						"url": "{{URL}}/api/getAllContracts"
 					},
 					"response": []
 				},
@@ -871,7 +871,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getContractById/{{contractId}}"
+						"url": "{{URL}}/api/getContractById/{{contractId}}"
 					},
 					"response": []
 				},
@@ -880,7 +880,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getContractByUserId/{{userId}}"
+						"url": "{{URL}}/api/getContractByUserId/{{userId}}"
 					},
 					"response": []
 				}
@@ -925,7 +925,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/addReview"
+						"url": "{{URL}}/api/addReview"
 					},
 					"response": []
 				},
@@ -934,7 +934,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getReviewById/{{reviewId}}"
+						"url": "{{URL}}/api/getReviewById/{{reviewId}}"
 					},
 					"response": []
 				},
@@ -943,7 +943,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/getReviewsByTarget/{{id}}/{{type}}"
+						"url": "{{URL}}/api/getReviewsByTarget/{{id}}/{{type}}"
 					},
 					"response": []
 				}
@@ -1010,6 +1010,10 @@
 		{
 			"key": "hostId",
 			"value": ""
+		},
+		{
+			"key": "URL",
+			"value": "http://localhost:8000"
 		}
 	]
 }
