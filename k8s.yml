@@ -90,26 +90,12 @@ spec:
           mountPath: /secrets/
           readOnly: true
       - name: cloud-sql-proxy
-        # It is recommended to use the latest version of the Cloud SQL proxy
-        # Make sure to update on a regular schedule!
         image: gcr.io/cloudsql-docker/gce-proxy:1.17
         command:
           - "/cloud_sql_proxy"
-
-          # If connecting from a VPC-native GKE cluster, you can use the
-          # following flag to have the proxy connect over private IP
-          # - "-ip_address_types=PRIVATE"
-
-          # Replace DB_PORT with the port the proxy should listen on
-          # Defaults: MySQL: 3306, Postgres: 5432, SQLServer: 1433
           - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
-        # - "-instances=<INSTANCE_CONNECTION_NAME>=tcp:<DB_PORT>"
-
-          # This flag specifies where the service account key can be found
           - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
         securityContext:
-          # The default Cloud SQL proxy image runs as the
-          # "nonroot" user and group (uid: 65532) by default.
           runAsNonRoot: true
         volumeMounts:
         - name: sa-volume
@@ -156,26 +142,12 @@ spec:
           mountPath: /secrets/
           readOnly: true
       - name: cloud-sql-proxy
-        # It is recommended to use the latest version of the Cloud SQL proxy
-        # Make sure to update on a regular schedule!
         image: gcr.io/cloudsql-docker/gce-proxy:1.17
         command:
           - "/cloud_sql_proxy"
-
-          # If connecting from a VPC-native GKE cluster, you can use the
-          # following flag to have the proxy connect over private IP
-          # - "-ip_address_types=PRIVATE"
-
-          # Replace DB_PORT with the port the proxy should listen on
-          # Defaults: MySQL: 3306, Postgres: 5432, SQLServer: 1433
           - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
-        # - "-instances=<INSTANCE_CONNECTION_NAME>=tcp:<DB_PORT>"
-
-          # This flag specifies where the service account key can be found
           - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
         securityContext:
-          # The default Cloud SQL proxy image runs as the
-          # "nonroot" user and group (uid: 65532) by default.
           runAsNonRoot: true
         volumeMounts:
         - name: sa-volume
@@ -222,26 +194,12 @@ spec:
           mountPath: /secrets/
           readOnly: true
       - name: cloud-sql-proxy
-        # It is recommended to use the latest version of the Cloud SQL proxy
-        # Make sure to update on a regular schedule!
         image: gcr.io/cloudsql-docker/gce-proxy:1.17
         command:
           - "/cloud_sql_proxy"
-
-          # If connecting from a VPC-native GKE cluster, you can use the
-          # following flag to have the proxy connect over private IP
-          # - "-ip_address_types=PRIVATE"
-
-          # Replace DB_PORT with the port the proxy should listen on
-          # Defaults: MySQL: 3306, Postgres: 5432, SQLServer: 1433
           - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
-        # - "-instances=<INSTANCE_CONNECTION_NAME>=tcp:<DB_PORT>"
-
-          # This flag specifies where the service account key can be found
           - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
         securityContext:
-          # The default Cloud SQL proxy image runs as the
-          # "nonroot" user and group (uid: 65532) by default.
           runAsNonRoot: true
         volumeMounts:
         - name: sa-volume
@@ -288,26 +246,12 @@ spec:
           mountPath: /secrets/
           readOnly: true
       - name: cloud-sql-proxy
-        # It is recommended to use the latest version of the Cloud SQL proxy
-        # Make sure to update on a regular schedule!
         image: gcr.io/cloudsql-docker/gce-proxy:1.17
         command:
           - "/cloud_sql_proxy"
-
-          # If connecting from a VPC-native GKE cluster, you can use the
-          # following flag to have the proxy connect over private IP
-          # - "-ip_address_types=PRIVATE"
-
-          # Replace DB_PORT with the port the proxy should listen on
-          # Defaults: MySQL: 3306, Postgres: 5432, SQLServer: 1433
           - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
-        # - "-instances=<INSTANCE_CONNECTION_NAME>=tcp:<DB_PORT>"
-
-          # This flag specifies where the service account key can be found
           - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
         securityContext:
-          # The default Cloud SQL proxy image runs as the
-          # "nonroot" user and group (uid: 65532) by default.
           runAsNonRoot: true
         volumeMounts:
         - name: sa-volume
@@ -325,6 +269,162 @@ metadata:
 spec:
   selector:
     app: service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contract
+spec:
+  selector:
+    matchLabels:
+      app: contract
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: contract
+    spec:
+      containers:
+      - name: contract
+        image: eu.gcr.io/ptri-2021/contract:v0
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: sa-volume
+          mountPath: /secrets/
+          readOnly: true
+      - name: cloud-sql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.17
+        command:
+          - "/cloud_sql_proxy"
+          - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
+          - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
+        securityContext:
+          runAsNonRoot: true
+        volumeMounts:
+        - name: sa-volume
+          mountPath: /secrets/
+          readOnly: true
+      volumes:
+      - name: sa-volume
+        secret:
+          secretName: sa-json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: contract-service
+spec:
+  selector:
+    app: contract
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review
+spec:
+  selector:
+    matchLabels:
+      app: review
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: review
+    spec:
+      containers:
+      - name: review
+        image: eu.gcr.io/ptri-2021/review:v0
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: sa-volume
+          mountPath: /secrets/
+          readOnly: true
+      - name: cloud-sql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.17
+        command:
+          - "/cloud_sql_proxy"
+          - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
+          - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
+        securityContext:
+          runAsNonRoot: true
+        volumeMounts:
+        - name: sa-volume
+          mountPath: /secrets/
+          readOnly: true
+      volumes:
+      - name: sa-volume
+        secret:
+          secretName: sa-json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-service
+spec:
+  selector:
+    app: review
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transaction
+spec:
+  selector:
+    matchLabels:
+      app: transaction
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: transaction
+    spec:
+      containers:
+      - name: transaction
+        image: eu.gcr.io/ptri-2021/transaction:v0
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: sa-volume
+          mountPath: /secrets/
+          readOnly: true
+      - name: cloud-sql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.17
+        command:
+          - "/cloud_sql_proxy"
+          - "-instances=ptri-2021:europe-west1:ptr-pti=tcp:3306"
+          - "-credential_file=/secrets/ptri-2021-7a6a976334c0.json"
+        securityContext:
+          runAsNonRoot: true
+        volumeMounts:
+        - name: sa-volume
+          mountPath: /secrets/
+          readOnly: true
+      volumes:
+      - name: sa-volume
+        secret:
+          secretName: sa-json
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transaction-service
+spec:
+  selector:
+    app: transaction
   ports:
     - protocol: TCP
       port: 80
