@@ -36,5 +36,51 @@ class ServiceService
 		return $this->performRequest('POST','/api/addService', $data);
 	}
 
+	/**
+	 * Get all services
+	 * @return string
+	 */
+	public function getAllServices()
+	{
+		return $this->performRequest('GET',"/api/getAllServices");
+	}
+
+	/**
+	 * Get service by id
+	 * @return string
+	 */
+	public function getServiceById($id)
+	{
+		return $this->performRequest('GET',"/api/getServiceById/{$id}");
+	}
+
+	/**
+     * Update service
+     * @return string
+     */
+	public function updateService($data)
+	{
+		return $this->performRequest('POST','/api/updateService', $data);
+	}
+
+
+	/**
+	 * Get service by id
+	 * @return string
+	 */
+	public function deleteServiceById($id)
+	{
+		return $this->performRequest('GET',"/api/deleteServiceById/{$id}");
+	}
+
+	/**
+     * Get Services with filter
+     * @return string
+     */
+	public function getServicesWithFilter($data)
+	{
+		return $this->performRequest('POST','/api/getServicesWithFilter', $data);
+	}
+
 
 }

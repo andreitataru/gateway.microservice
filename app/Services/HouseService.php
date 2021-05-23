@@ -81,8 +81,14 @@ class HouseService
 		return $this->performRequest('POST','/api/getHousesWithFilter', $data);
 	}
 
-
-
+	/**
+	 * Get houses by hostId
+	 * @return string
+	 */
+	public function getHousesWithOwnerId($id)
+	{
+		return $this->performRequest('GET',"/api/getHousesWithOwnerId/{$id}");
+	}
 
 
 }

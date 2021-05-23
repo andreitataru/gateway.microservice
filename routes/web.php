@@ -52,9 +52,33 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/updateHouse', 'HouseController@updateHouse');
 		$router->get('/api/deleteHouseById/{id}', 'HouseController@deleteHouseById');
 		$router->post('/api/getHousesWithFilter', 'HouseController@getHousesWithFilter');
+		$router->get('/api/getHousesWithOwnerId/{id}', 'HouseController@getHousesWithOwnerId');   
 
 		//SERVICE MICROSERVICE
 		$router->post('/api/addService', 'ServiceController@addService');
+		$router->get('/api/getAllServices', 'ServiceController@getAllServices');
+		$router->get('/api/getServiceById/{id}', 'ServiceController@getServiceById');   
+		$router->post('/api/updateService', 'ServiceController@updateService');
+		$router->get('/api/deleteServiceById/{id}', 'ServiceController@deleteServiceById');
+		$router->post('/api/getServicesWithFilter', 'ServiceController@getServicesWithFilter');
+
+		//TRANSACTION MICROSERVICE
+		$router->post('/api/addTransaction', 'TransactionController@addTransaction');
+		$router->get('/api/getAllTransactions', 'TransactionController@getAllTransactions');
+		$router->get('/api/getTransactionById/{id}', 'TransactionController@getTransactionById');   
+		$router->get('/api/getTransactionByUserId/{id}', 'TransactionController@getTransactionByUserId');
+		$router->post('/api/getTransactionsByDate', 'TransactionController@getTransactionsByDate');
+
+		//CONTRACT MICROSERVICE
+		$router->post('/api/addContract', 'ContractController@addContract');
+		$router->get('/api/getAllContracts', 'ContractController@getAllContracts');
+		$router->get('/api/getContractById/{id}', 'ContractController@getContractById');  
+		$router->get('/api/getContractByUserId/{id}', 'ContractController@getContractByUserId');  
+
+		//REVIEW MICROSERVICE
+		$router->post('/api/addReview', 'ReviewController@addReview');
+		$router->get('/api/getReviewById/{id}', 'ReviewController@getReviewById');
+		$router->get('/api/getReviewsByTarget/{id}/{type}', 'ReviewController@getReviewsByTarget');   
 
 	});
 //});

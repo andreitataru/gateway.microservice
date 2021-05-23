@@ -59,7 +59,7 @@ class HouseController extends Controller
     }
 
     /**
-     * Get Messages
+     * Get Houses
      * @return Iluminate\Http\Response
      */
     public function getAllHouses()
@@ -69,7 +69,7 @@ class HouseController extends Controller
     }
 
     /**
-     * Get Active Chats
+     * Get House by Id
      * @return Iluminate\Http\Response
      */
     public function getHouseById($id)
@@ -79,7 +79,7 @@ class HouseController extends Controller
     }
 
     /**
-     * Add House
+     * Update House
      * @return Iluminate\Http\Response
      */
     public function updateHouse(Request $request)
@@ -103,19 +103,9 @@ class HouseController extends Controller
   
     }
 
-    /**
-     * Get Messages
-     * @return Iluminate\Http\Response
-     */
-    public function GetMessages(Request $request)
-    {
-        $responseGetMessages = $this->MessageService->GetMessages($request->all());
-        return $this->successResponse($responseGetMessages);
-    }
-
 
     /**
-     * Get Active Chats
+     * Delete House by Id
      * @return Iluminate\Http\Response
      */
     public function deleteHouseById($id, Request $request)
@@ -139,7 +129,7 @@ class HouseController extends Controller
 
 
     /**
-     * Add House
+     * Get House with filters
      * @return Iluminate\Http\Response
      */
     public function getHousesWithFilter(Request $request)
@@ -148,6 +138,16 @@ class HouseController extends Controller
         return $this->successResponse($responseGetHousesWithFilter);
     }
 
+    
+    /**
+     * Get Houses by hostId
+     * @return Iluminate\Http\Response
+     */
+    public function getHousesWithOwnerId($id)
+    {
+        $responseGetHousesWithOwnerId = $this->HouseService->getHousesWithOwnerId($id);
+        return $this->successResponse($responseGetHousesWithOwnerId);
+    }
 
 
 

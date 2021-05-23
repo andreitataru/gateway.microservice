@@ -75,7 +75,7 @@ class UserController extends Controller
      * Get Single user
      * @return Iluminate\Http\Response
      */
-    public function singleUser($id)
+    public function singleUser($id, Request $request)
     {
         $responseSingleUser = $this->UserService->singleUser($request, $request->header(), $id);
         return $this->successResponse($responseSingleUser);
