@@ -38,7 +38,7 @@ class ContractController extends Controller
 
 
     /**
-     * Add Service
+     * Add Contract
      * @return Iluminate\Http\Response
      */
     public function addContract(Request $request)
@@ -48,7 +48,6 @@ class ContractController extends Controller
         
         $obj = json_decode($responsecheckToken, true);
 
-        //ServiceProvider
         if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host"){
             if ($obj['accountId'] == $request->hostId){
                 $responseAddContract = $this->ContractService->addContract($request->all());
@@ -65,7 +64,7 @@ class ContractController extends Controller
     }
 
     /**
-     * Get Services
+     * Get Contracts
      * @return Iluminate\Http\Response
      */
     public function getAllContracts(Request $request)
