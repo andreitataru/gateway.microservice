@@ -49,3 +49,4 @@ EXPOSE 80
 # minikube service <NAME> --url
 # CREATE SECRET
 # kubectl create secret generic <NAME> --from-file=<Path>
+# gcloud container clusters get-credentials
