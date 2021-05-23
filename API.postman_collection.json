@@ -48,12 +48,12 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "student@gmail.com",
+									"value": "teste@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3",
+									"value": "123",
 									"type": "text"
 								}
 							]
@@ -200,6 +200,11 @@
 									"key": "message",
 									"value": "teste1",
 									"type": "text"
+								},
+								{
+									"key": "idReply",
+									"value": "1",
+									"type": "text"
 								}
 							]
 						},
@@ -217,12 +222,12 @@
 							"formdata": [
 								{
 									"key": "userId",
-									"value": "1",
+									"value": "6",
 									"type": "text"
 								},
 								{
 									"key": "idReceiver",
-									"value": "2",
+									"value": "4",
 									"type": "text"
 								}
 							]
