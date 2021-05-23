@@ -6,11 +6,18 @@ use Illuminate\Http\Response;
 use App\Traits\ApiResponser;    
 use Illuminate\Http\Request;
 use App\Services\TransactionService; 
+use App\Services\UserService;
 
 
 class TransactionController extends Controller
 {
-    use ApiResponser;       
+    use ApiResponser;    
+    
+    /**
+     * User's service
+     * @var UserService
+     */
+    public $UserService;
 
     /**
      * Transaction's service
@@ -23,8 +30,9 @@ class TransactionController extends Controller
      *
      * @return void
      */
-    public function __construct(TransactionService $TransactionService)
+    public function __construct(UserService $UserService, TransactionService $TransactionService)
     {
+        $this->UserService = $UserService;
         $this->TransactionService = $TransactionService;
     }
 
@@ -42,10 +50,21 @@ class TransactionController extends Controller
      * Get Transactions
      * @return Iluminate\Http\Response
      */
-    public function getAllTransactions()
+    public function getAllTransactions(Request $request)
     {
-        $responseGetAllTransactions = $this->TransactionService->getAllTransactions();
-        return $this->successResponse($responseGetAllTransactions);
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        
+        $obj = json_decode($responsecheckToken, true);
+
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Admin"){
+            $responseGetAllTransactions = $this->TransactionService->getAllTransactions();
+            return $this->successResponse($responseGetAllTransactions);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
+
     }
 
     /**

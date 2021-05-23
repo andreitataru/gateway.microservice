@@ -141,6 +141,21 @@
 						"url": "http://localhost:8000/api/updateUser"
 					},
 					"response": []
+				},
+				{
+					"name": "allUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/users"
+					},
+					"response": []
 				}
 			]
 		},
@@ -707,6 +722,12 @@
 				{
 					"name": "getAllTransactions",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"url": "http://localhost:8000/api/getAllTransactions"
@@ -818,6 +839,12 @@
 				{
 					"name": "getAllContracts",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
 						"method": "GET",
 						"header": [],
 						"url": "http://localhost:8000/api/getAllContracts"
@@ -863,7 +890,7 @@
 							"formdata": [
 								{
 									"key": "userIdReview",
-									"value": "1",
+									"value": "3",
 									"type": "text"
 								},
 								{
@@ -878,7 +905,7 @@
 								},
 								{
 									"key": "type",
-									"value": "user",
+									"value": "house",
 									"type": "text"
 								}
 							]

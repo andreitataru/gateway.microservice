@@ -68,10 +68,20 @@ class ContractController extends Controller
      * Get Services
      * @return Iluminate\Http\Response
      */
-    public function getAllContracts()
+    public function getAllContracts(Request $request)
     {
-        $responseGetAllContracts = $this->ContractService->getAllContracts();
-        return $this->successResponse($responseGetAllContracts);
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        
+        $obj = json_decode($responsecheckToken, true);
+
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Admin"){
+            $responseGetAllContracts = $this->ContractService->getAllContracts();
+            return $this->successResponse($responseGetAllContracts);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
     }
 
     /**
