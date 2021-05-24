@@ -15,6 +15,7 @@ spec:
       containers:
       - name: gateway
         image: eu.gcr.io/ptri-2021/gateway:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -83,6 +84,7 @@ spec:
       containers:
       - name: user
         image: eu.gcr.io/ptri-2021/user:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -135,6 +137,7 @@ spec:
       containers:
       - name: house
         image: eu.gcr.io/ptri-2021/house:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -187,6 +190,7 @@ spec:
       containers:
       - name: message
         image: eu.gcr.io/ptri-2021/message:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -239,6 +243,7 @@ spec:
       containers:
       - name: service
         image: eu.gcr.io/ptri-2021/service:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -291,6 +296,7 @@ spec:
       containers:
       - name: contract
         image: eu.gcr.io/ptri-2021/contract:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -343,6 +349,7 @@ spec:
       containers:
       - name: review
         image: eu.gcr.io/ptri-2021/review:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -395,6 +402,7 @@ spec:
       containers:
       - name: transaction
         image: eu.gcr.io/ptri-2021/transaction:v0
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
