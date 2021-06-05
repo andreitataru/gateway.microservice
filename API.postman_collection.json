@@ -19,33 +19,22 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "test",
+									"value": "teste",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "test@gmail.com",
+									"value": "teste@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "1234",
+									"value": "123",
 									"type": "text"
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/register",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"register"
-							]
-						}
+						"url": "{{URL}}/api/register"
 					},
 					"response": []
 				},
@@ -59,28 +48,17 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "test@gmail.com",
+									"value": "teste@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "1234",
+									"value": "123",
 									"type": "text"
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"login"
-							]
-						}
+						"url": "{{URL}}/api/login"
 					},
 					"response": []
 				},
@@ -99,18 +77,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/profile",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"profile"
-							]
-						}
+						"url": "{{URL}}/api/profile"
 					},
 					"response": []
 				},
@@ -129,18 +96,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/checkToken",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"checkToken"
-							]
-						}
+						"url": "{{URL}}/api/checkToken"
 					},
 					"response": []
 				},
@@ -194,18 +150,37 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/updateUser",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"updateUser"
-							]
-						}
+						"url": "{{URL}}/api/updateUser"
+					},
+					"response": []
+				},
+				{
+					"name": "allUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/users"
+					},
+					"response": []
+				},
+				{
+					"name": "userById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/users/{{id}}"
 					},
 					"response": []
 				}
@@ -234,28 +209,22 @@
 							"formdata": [
 								{
 									"key": "idReceiver",
-									"value": "2",
+									"value": "4",
 									"type": "text"
 								},
 								{
 									"key": "message",
-									"value": "teste",
+									"value": "teste1",
+									"type": "text"
+								},
+								{
+									"key": "idReply",
+									"value": "1",
 									"type": "text"
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/SendMessage",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"SendMessage"
-							]
-						}
+						"url": "{{URL}}/api/SendMessage"
 					},
 					"response": []
 				},
@@ -269,28 +238,17 @@
 							"formdata": [
 								{
 									"key": "userId",
-									"value": "1",
+									"value": "6",
 									"type": "text"
 								},
 								{
 									"key": "idReceiver",
-									"value": "2",
+									"value": "4",
 									"type": "text"
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/GetMessages",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"GetMessages"
-							]
-						}
+						"url": "{{URL}}/api/GetMessages"
 					},
 					"response": []
 				},
@@ -309,18 +267,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/GetActiveChats",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"GetActiveChats"
-							]
-						}
+						"url": "{{URL}}/api/GetActiveChats"
 					},
 					"response": []
 				}
@@ -419,18 +366,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/addHouse",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"addHouse"
-							]
-						}
+						"url": "{{URL}}/api/addHouse"
 					},
 					"response": []
 				},
@@ -439,18 +375,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/getAllHouses",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"getAllHouses"
-							]
-						}
+						"url": "{{URL}}/api/getAllHouses"
 					},
 					"response": []
 				},
@@ -459,19 +384,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/getHouseById/{{houseId}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"getHouseById",
-								"{{houseId}}"
-							]
-						}
+						"url": "{{URL}}/api/getHouseById/{{houseId}}"
 					},
 					"response": []
 				},
@@ -586,18 +499,7 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/updateHouse",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"updateHouse"
-							]
-						}
+						"url": "{{URL}}/api/updateHouse"
 					},
 					"response": []
 				},
@@ -616,19 +518,7 @@
 						},
 						"method": "GET",
 						"header": [],
-						"url": {
-							"raw": "http://localhost:8000/api/deleteHouseById/{{houseId}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"deleteHouseById",
-								"{{houseId}}"
-							]
-						}
+						"url": "{{URL}}/api/deleteHouseById/{{houseId}}"
 					},
 					"response": []
 				},
@@ -689,18 +579,16 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/getHousesWithFilter",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"getHousesWithFilter"
-							]
-						}
+						"url": "{{URL}}/api/getHousesWithFilter"
+					},
+					"response": []
+				},
+				{
+					"name": "getHousesWithOwnerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getHousesWithOwnerId/{{hostId}}"
 					},
 					"response": []
 				}
@@ -764,18 +652,352 @@
 								}
 							]
 						},
-						"url": {
-							"raw": "http://localhost:8000/api/addService",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8000",
-							"path": [
-								"api",
-								"addService"
+						"url": "{{URL}}/api/addService"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllServices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getAllServices"
+					},
+					"response": []
+				},
+				{
+					"name": "getServiceById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getServiceById/{{serviceId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "updateService",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "serviceId",
+									"value": "{{serviceId}}",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "asdfghfdz",
+									"type": "text"
+								}
 							]
-						}
+						},
+						"url": "{{URL}}/api/updateService"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteServiceById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/deleteServiceById/{{serviceId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getServicesWithFilter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asdfghfdz",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "priceHour",
+									"value": "325",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/getServicesWithFilter"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "transaction.microservice",
+			"item": [
+				{
+					"name": "addTransaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "buyerId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "sellerId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "contractId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "paymentType",
+									"value": "Card",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/addTransaction"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllTransactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getAllTransactions"
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getTransactionById/{{transactionId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getTransactionByUserId/{{userId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getTransactionsByDate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "date",
+									"value": "2021-05-19",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/getTransactionsByDate"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contract.microservice",
+			"item": [
+				{
+					"name": "addContract",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "houseId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "startContract",
+									"value": "2021/05/05",
+									"type": "text"
+								},
+								{
+									"key": "endContract",
+									"value": "2021/05/05",
+									"type": "text"
+								},
+								{
+									"key": "terms",
+									"value": "dfgbfhfg",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "234",
+									"type": "text"
+								},
+								{
+									"key": "contractType",
+									"value": "house",
+									"type": "text"
+								},
+								{
+									"key": "hostId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "studentId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/addContract"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllContracts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getAllContracts"
+					},
+					"response": []
+				},
+				{
+					"name": "getContractById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getContractById/{{contractId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getContractByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getContractByUserId/{{userId}}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "review.microservice",
+			"item": [
+				{
+					"name": "addReview",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userIdReview",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "idReviewed",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "house",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/addReview"
+					},
+					"response": []
+				},
+				{
+					"name": "getReviewById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getReviewById/{{reviewId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getReviewsByTarget",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getReviewsByTarget/{{id}}/{{type}}"
 					},
 					"response": []
 				}
@@ -814,6 +1036,10 @@
 		{
 			"key": "houseId",
 			"value": ""
+		},
+		{
+			"key": "URL",
+			"value": "http://localhost:8000"
 		}
 	]
 }
