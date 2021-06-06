@@ -46,6 +46,16 @@ class UserService
 	}
 
 	/**
+     * Create an instance of author using the users service
+     * @return string
+     */
+	public function googleSignIn($data)
+	{
+		return $this->performRequest('POST','/api/googleSignIn', $data);
+	}
+	
+
+	/**
 	 * Get the single of author from the author service
 	 * @return string
 	 */

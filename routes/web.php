@@ -40,6 +40,7 @@ $router->get('/', function () use ($router) {
 		$router->get('/api/users/{id}', 'UserController@singleUser');
 		$router->get('/api/users', 'UserController@users');
 		$router->post('/api/updateUser', 'UserController@updateUser');
+		$router->post('/api/googleSignIn', 'UserController@googleSignIn');
 
 		//CHAT MICROSERVICE
 		$router->post('/api/SendMessage', 'MessageController@SendMessage');
