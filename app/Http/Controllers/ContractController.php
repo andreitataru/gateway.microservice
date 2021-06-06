@@ -47,15 +47,10 @@ class ContractController extends Controller
         $responsecheckToken = $this->UserService->checkToken($request, $token);
         
         $obj = json_decode($responsecheckToken, true);
-
-        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Host"){
-            if ($obj['accountId'] == $request->hostId){
-                $responseAddContract = $this->ContractService->addContract($request->all());
-                return $this->successResponse($responseAddContract);
-            }
-            else{
-                return $this->errorResponse("Error", 401);
-            }
+        //&& $obj['accountType'] == "Host"
+        if ($obj['status'] == "Token Valid"){
+            $responseAddContract = $this->ContractService->addContract($request->all());
+            return $this->successResponse($responseAddContract);
 
         }
         else {
