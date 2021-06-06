@@ -180,5 +180,16 @@ class HouseController extends Controller
         $responseGetInterestsByHouseId = $this->HouseService->getInterestsByHouseId($id);
         return $this->successResponse($responseGetInterestsByHouseId);
     }
+    
+
+    /**
+     * Get interests by userId
+     * @return Iluminate\Http\Response
+     */
+    public function getInterestsByUserId($id)
+    {
+        $responseGetInterestsByUserId = $this->HouseService->getInterestsByUserId($id);
+        return $this->successResponse($responseGetInterestsByUserId);
+    }
 
 }

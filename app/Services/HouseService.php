@@ -108,6 +108,16 @@ class HouseService
 	{
 		return $this->performRequest('GET',"/api/getInterestsByHouseId/{$id}");
 	}
+	
+
+	/**
+	 * Get interests by userId
+	 * @return string
+	 */
+	public function getInterestsByUserId($id)
+	{
+		return $this->performRequest('GET',"/api/getInterestsByUserId/{$id}");
+	}
 
 
 }
