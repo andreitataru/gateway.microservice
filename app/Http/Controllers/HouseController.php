@@ -55,7 +55,6 @@ class HouseController extends Controller
         else {
             return $this->errorResponse("Error", 401);
         }
-
     }
 
     /**
@@ -149,6 +148,48 @@ class HouseController extends Controller
         return $this->successResponse($responseGetHousesWithOwnerId);
     }
 
+    /**
+     * Add Interest
+     * @return Iluminate\Http\Response
+     */
+    public function addInterest(Request $request)
+    {
+        $token = $request->header('Authorization');
+        $responsecheckToken = $this->UserService->checkToken($request, $token);
+        
+        $obj = json_decode($responsecheckToken, true);
 
+        if ($obj['status'] == "Token Valid" && $obj['accountType'] == "Student"){
+            $request->request->add(['idInterested' => $obj['accountId']]);
+            $request->request->add(['personName' => $obj['name']]);
+            $responseAddInterest = $this->HouseService->addInterest($request->all());
+            return $this->successResponse($responseAddInterest);
+        }
+        else {
+            return $this->errorResponse("Error", 401);
+        }
+    }
+
+
+    /**
+     * Get interests by houseId
+     * @return Iluminate\Http\Response
+     */
+    public function getInterestsByHouseId($id)
+    {
+        $responseGetInterestsByHouseId = $this->HouseService->getInterestsByHouseId($id);
+        return $this->successResponse($responseGetInterestsByHouseId);
+    }
+    
+
+    /**
+     * Get interests by userId
+     * @return Iluminate\Http\Response
+     */
+    public function getInterestsByUserId($id)
+    {
+        $responseGetInterestsByUserId = $this->HouseService->getInterestsByUserId($id);
+        return $this->successResponse($responseGetInterestsByUserId);
+    }
 
 }

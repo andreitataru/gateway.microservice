@@ -28,7 +28,7 @@ class HouseService
 
 
     /**
-     * Create an instance of message using the message service
+     * Create an instance of house using the house service
      * @return string
      */
 	public function addHouse($data)
@@ -88,6 +88,35 @@ class HouseService
 	public function getHousesWithOwnerId($id)
 	{
 		return $this->performRequest('GET',"/api/getHousesWithOwnerId/{$id}");
+	}
+
+	/**
+     * Create an instance of interest using the house service
+     * @return string
+     */
+	public function addInterest($data)
+	{
+		return $this->performRequest('POST','/api/addInterest', $data);
+	}
+
+
+	/**
+	 * Get interests by houseId
+	 * @return string
+	 */
+	public function getInterestsByHouseId($id)
+	{
+		return $this->performRequest('GET',"/api/getInterestsByHouseId/{$id}");
+	}
+	
+
+	/**
+	 * Get interests by userId
+	 * @return string
+	 */
+	public function getInterestsByUserId($id)
+	{
+		return $this->performRequest('GET',"/api/getInterestsByUserId/{$id}");
 	}
 
 
