@@ -19,12 +19,12 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "teste",
+									"value": "teste2",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "teste@gmail.com",
+									"value": "teste2@gmail.com",
 									"type": "text"
 								},
 								{
@@ -108,7 +108,7 @@
 							"formdata": [
 								{
 									"key": "accountType",
-									"value": "Student",
+									"value": "Host",
 									"type": "text"
 								},
 								{
@@ -166,14 +166,42 @@
 					"name": "userById",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": {
-								"token": "{{token}}"
-							}
+							"type": "noauth"
 						},
 						"method": "GET",
 						"header": [],
 						"url": "{{URL}}/api/users/{{id}}"
+					},
+					"response": []
+				},
+				{
+					"name": "googleSignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "usernameDoGoogle",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "emaildoGoogle@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "googleId",
+									"value": "13457475600",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/googleSignIn"
 					},
 					"response": []
 				}
@@ -342,7 +370,7 @@
 								},
 								{
 									"key": "dateAvailable",
-									"value": "2021/05/01",
+									"value": "2021/06/08",
 									"type": "text"
 								},
 								{
@@ -509,7 +537,7 @@
 							"formdata": [
 								{
 									"key": "location",
-									"value": "boa",
+									"value": "Portugal",
 									"type": "text"
 								},
 								{
@@ -559,6 +587,11 @@
 									"value": "thing2 thing1",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "Amora",
+									"type": "text"
 								}
 							]
 						},
@@ -606,6 +639,15 @@
 						"method": "GET",
 						"header": [],
 						"url": "{{URL}}/api/getInterestsByHouseId/{{houseId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "getInterestsByUserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{URL}}/api/getInterestsByUserId/{{houseId}}"
 					},
 					"response": []
 				}
@@ -879,12 +921,12 @@
 								},
 								{
 									"key": "startContract",
-									"value": "2021/05/05",
+									"value": "2021/06/08",
 									"type": "text"
 								},
 								{
 									"key": "endContract",
-									"value": "2021/05/05",
+									"value": "2021/07/08",
 									"type": "text"
 								},
 								{
@@ -899,17 +941,17 @@
 								},
 								{
 									"key": "contractType",
-									"value": "service",
+									"value": "house",
 									"type": "text"
 								},
 								{
 									"key": "hostId",
-									"value": "14",
+									"value": "2",
 									"type": "text"
 								},
 								{
-									"key": "serviceId",
-									"value": "2",
+									"key": "studentId",
+									"value": "1",
 									"type": "text"
 								}
 							]
