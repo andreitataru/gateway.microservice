@@ -58,6 +58,7 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/addInterest', 'HouseController@addInterest');
 		$router->get('/api/getInterestsByHouseId/{id}', 'HouseController@getInterestsByHouseId'); 
 		$router->get('/api/getInterestsByUserId/{id}', 'HouseController@getInterestsByUserId');
+		$router->post('/api/rateHouse', 'HouseController@rateHouse');
 
 		//SERVICE MICROSERVICE
 		$router->post('/api/addService', 'ServiceController@addService');
