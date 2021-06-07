@@ -59,7 +59,8 @@ class ReviewController extends Controller
 
         if ($obj['status'] == "Token Valid" && $obj['accountId'] == $request->userIdReview){
             $responseAddReview = $this->ReviewService->addReview($request->all());
-            if ($request->type == "house"){
+            $reviewObj = json_decode($responseAddReview, true);
+            if ($request->type == "house" && $reviewObj['message'] == 'CREATED'){
                 $this->HouseService->rateHouse($request->all());
             }
             return $this->successResponse($responseAddReview);
