@@ -40,6 +40,7 @@ $router->get('/', function () use ($router) {
 		$router->get('/api/users/{id}', 'UserController@singleUser');
 		$router->get('/api/users', 'UserController@users');
 		$router->post('/api/updateUser', 'UserController@updateUser');
+		$router->post('/api/googleSignIn', 'UserController@googleSignIn');
 
 		//CHAT MICROSERVICE
 		$router->post('/api/SendMessage', 'MessageController@SendMessage');
@@ -57,6 +58,7 @@ $router->get('/', function () use ($router) {
 		$router->post('/api/addInterest', 'HouseController@addInterest');
 		$router->get('/api/getInterestsByHouseId/{id}', 'HouseController@getInterestsByHouseId'); 
 		$router->get('/api/getInterestsByUserId/{id}', 'HouseController@getInterestsByUserId');
+		$router->post('/api/rateHouse', 'HouseController@rateHouse');
 
 		//SERVICE MICROSERVICE
 		$router->post('/api/addService', 'ServiceController@addService');

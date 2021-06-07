@@ -49,6 +49,16 @@ class UserController extends Controller
         return $this->successResponse($responseLogin);
     }
 
+    /**
+     * GoogleSignIn
+     * @return Iluminate\Http\Response
+     */
+    public function googleSignIn(Request $request)
+    {
+        $responseGoogleSignIn = $this->UserService->googleSignIn($request->all());
+        return $this->successResponse($responseGoogleSignIn);
+    }
+
 
     /**
      * Get user profile by token

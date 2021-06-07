@@ -192,4 +192,13 @@ class HouseController extends Controller
         return $this->successResponse($responseGetInterestsByUserId);
     }
 
+    /**
+     * Rate House
+     * @return Iluminate\Http\Response
+     */
+    public function rateHouse(Request $request)
+    {
+        $responseRateHouse = $this->HouseService->rateHouse($request->all());
+        return $this->successResponse($responseRateHouse); 
+    }
 }

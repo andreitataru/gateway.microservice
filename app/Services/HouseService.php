@@ -119,5 +119,14 @@ class HouseService
 		return $this->performRequest('GET',"/api/getInterestsByUserId/{$id}");
 	}
 
+	/**
+     * Rate House
+     * @return string
+     */
+	public function rateHouse($data)
+	{
+		return $this->performRequest('POST','/api/rateHouse', $data);
+	}
+
 
 }

@@ -7,6 +7,8 @@ use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use App\Services\ReviewService; 
 use App\Services\UserService;
+use App\Services\HouseService;
+
 
 class ReviewController extends Controller
 {
@@ -24,16 +26,23 @@ class ReviewController extends Controller
      */
     public $ReviewService;
 
+    /**
+     * House's service
+     * @var HouseService
+     */
+    public $HouseService;
+
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserService $UserService, ReviewService $ReviewService)
+    public function __construct(UserService $UserService, ReviewService $ReviewService, HouseService $HouseService)
     {
         $this->ReviewService = $ReviewService;
         $this->UserService = $UserService;
+        $this->HouseService = $HouseService;
     }
 
 
@@ -50,6 +59,9 @@ class ReviewController extends Controller
 
         if ($obj['status'] == "Token Valid" && $obj['accountId'] == $request->userIdReview){
             $responseAddReview = $this->ReviewService->addReview($request->all());
+            if ($request->type == "house"){
+                $this->HouseService->rateHouse($request->all());
+            }
             return $this->successResponse($responseAddReview);
         }
         else {
