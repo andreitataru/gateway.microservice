@@ -92,7 +92,7 @@ class HouseController extends Controller
         $responseGetHouseById = $this->HouseService->getHouseById($request->houseId);
         $houseObj = json_decode($responseGetHouseById, true);
 
-        if ($obj['status'] == "Token Valid" && ($obj['accountType'] == "Host" || $obj['accountType'] == "Admin") && $obj['accountId'] == $houseObj['house']['hostId']){
+        if ($obj['status'] == "Token Valid" && (($obj['accountType'] == "Host" && $obj['accountId'] == $houseObj['house']['hostId']) || $obj['accountType'] == "Admin")){
             $responseUpdateHouse = $this->HouseService->updateHouse($request->all());
             return $this->successResponse($responseUpdateHouse);
         }
