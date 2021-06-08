@@ -19,12 +19,12 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "teste2",
+									"value": "teste",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "teste2@gmail.com",
+									"value": "teste@gmail.com",
 									"type": "text"
 								},
 								{
@@ -591,7 +591,8 @@
 								{
 									"key": "address",
 									"value": "Amora",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -648,6 +649,30 @@
 						"method": "GET",
 						"header": [],
 						"url": "{{URL}}/api/getInterestsByUserId/{{houseId}}"
+					},
+					"response": []
+				},
+				{
+					"name": "rateHouse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "rating",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{URL}}/api/rateHouse"
 					},
 					"response": []
 				}
@@ -931,12 +956,12 @@
 								},
 								{
 									"key": "terms",
-									"value": "dfgbfhfg",
+									"value": "Epic termsEpic termsEpic termsEpic termsEpic termsEpic termsEpic terms",
 									"type": "text"
 								},
 								{
 									"key": "price",
-									"value": "234",
+									"value": "1000",
 									"type": "text"
 								},
 								{
@@ -946,12 +971,12 @@
 								},
 								{
 									"key": "hostId",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "studentId",
-									"value": "1",
+									"value": "2",
 									"type": "text"
 								}
 							]
@@ -1019,7 +1044,7 @@
 								},
 								{
 									"key": "idReviewed",
-									"value": "2",
+									"value": "1",
 									"type": "text"
 								},
 								{

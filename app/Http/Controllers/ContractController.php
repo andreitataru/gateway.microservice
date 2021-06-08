@@ -7,6 +7,7 @@ use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use App\Services\ContractService; 
 use App\Services\UserService;
+use App\Services\HouseService;
 
 class ContractController extends Controller
 {
@@ -24,16 +25,23 @@ class ContractController extends Controller
      */
     public $ContractService;
 
+    /**
+     * House's service
+     * @var HouseService
+     */
+    public $HouseService;
+
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(UserService $UserService, ContractService $ContractService)
+    public function __construct(UserService $UserService, ContractService $ContractService, HouseService $HouseService)
     {
         $this->ContractService = $ContractService;
         $this->UserService = $UserService;
+        $this->HouseService = $HouseService;
     }
 
 
@@ -50,6 +58,11 @@ class ContractController extends Controller
         //&& $obj['accountType'] == "Host"
         if ($obj['status'] == "Token Valid"){
             $responseAddContract = $this->ContractService->addContract($request->all());
+            $resObj = json_decode($responseAddContract, true);
+            if ($resObj['message'] == "CREATED"){
+                $request->request->add(['dateAvailable' => $request->endContract]);
+                $this->HouseService->updateHouse($request->all());
+            }
             return $this->successResponse($responseAddContract);
 
         }
